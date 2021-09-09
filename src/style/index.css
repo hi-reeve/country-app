@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+@layer base{
+	:root{
+
+		/* light theme color palette */
+		--light-dark-blue  : hsl(200, 15%, 8%);
+		--light-dark-gray : hsl(0, 0%, 52%);
+		--light-gray : hsl(0, 0%, 98%);
+
+		/* dark theme color palette  */
+		--dark-dark-blue : hsl(209, 23%, 22%);
+		--dark-very-dark-blue : hsl(207, 26%, 17%);
+
+	}
+	.dark {
+		@apply text-white bg-dark-very;
+	}
+	.nav--dark{
+		@apply bg-dark-blue text-white;
+	}
+	.nav--light{
+		@apply bg-white text-light-dark-blue;
+	}
+}
+
+@layer components{
+	body {
+		@apply font-nunito-sans;
+	}
+}
