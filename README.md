@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/rest-country-app-with-vue-3-script-setup-sugar-gLYbHlR1v)
 - Live Site URL: [Live Demo](https://country-app-e6lo1nyx5-zynth17.vercel.app/#/)
 
 
