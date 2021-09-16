@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
     <div class="country">
         <div class="country__flag-wrapper">
-            <img :src="props.country.flag" class="country__flag" />
+            <img :alt="props.country.name" :src="props.country.flag" class="country__flag" />
         </div>
         <div class="country__info">
             <h4 class="country__info--title">{{ props.country.name }}</h4>

@@ -56,7 +56,7 @@ onMounted(() => {
         </router-link>
 
         <div class="mt-20">
-            <img :src="country?.flag" />
+            <img :alt="country?.name" :src="country?.flag" />
 
             <h3 class="font-bold mt-10 text-2xl">{{ country?.name }}</h3>
 
