@@ -55,68 +55,98 @@ onMounted(() => {
             <span>Back</span>
         </router-link>
 
-        <div class="mt-20">
-            <img :alt="country?.name" :src="country?.flag" />
+        <div class="mt-20 flex md:flex-row flex-col w-full justify-center">
+            <img
+                :alt="country?.name"
+                :src="country?.flag"
+                class="md:w-1/3 mx-auto"
+            />
+            <div class="md:ml-10 md:mx-auto">
+                <h3 class="font-bold mt-10 text-2xl">{{ country?.name }}</h3>
 
-            <h3 class="font-bold mt-10 text-2xl">{{ country?.name }}</h3>
+                <div class="mt-10 flex md:flex-row flex-col">
+                    <div>
+                        <p>
+                            <span class="font-bold">Native Name : </span>
+                            <span>{{ country?.nativeName }}</span>
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-bold">Population : </span>
+                            <span>
+                                {{
+                                    country?.population.toLocaleString("id-ID")
+                                }}</span
+                            >
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-bold">Region : </span>
+                            <span>{{ country?.region }}</span>
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-bold">Sub Region : </span>
+                            <span>{{ country?.subregion }}</span>
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-bold">Capital : </span>
+                            <span>{{ country?.capital }}</span>
+                        </p>
+                    </div>
 
-            <div class="mt-10">
-                <p>
-                    <span class="font-bold">Native Name : </span>
-                    <span>{{ country?.nativeName }}</span>
-                </p>
-                <p class="mt-2">
-                    <span class="font-bold">Population : </span>
-                    <span>
-                        {{ country?.population.toLocaleString("id-ID") }}</span
-                    >
-                </p>
-                <p class="mt-2">
-                    <span class="font-bold">Region : </span>
-                    <span>{{ country?.region }}</span>
-                </p>
-                <p class="mt-2">
-                    <span class="font-bold">Sub Region : </span>
-                    <span>{{ country?.subregion }}</span>
-                </p>
-                <p class="mt-2">
-                    <span class="font-bold">Capital : </span>
-                    <span>{{ country?.capital }}</span>
-                </p>
-
-                <div class="mt-10">
-                    <p>
-                        <span class="font-bold">Top Level Domain : </span>
-                        <span
-                            v-for="(domain, idx) in country?.topLevelDomain"
-                            :key="domain"
-                        >
-                            {{
-                                idx + 1 !== country?.topLevelDomain.length
-                                    ? `${domain}, `
-                                    : domain
-                            }}
-                        </span>
-                    </p>
-                    <p class="mt-2">
-                        <span class="font-bold">Currencies : </span>
-                        <span>{{ country?.currencies[0].name }}</span>
-                    </p>
-                    <p class="mt-2">
-                        <span class="font-bold">Languages : </span>
-                        <span v-for="(language,idx) in country?.languages" :key="language.name">
-						{{ idx + 1 !== country?.languages.length ? `${language.name}, ` : language.name }}
-						</span>
-                    </p>
+                    <div class="md:mt-0 md:ml-5 mt-10">
+                        <p>
+                            <span class="font-bold">Top Level Domain : </span>
+                            <span
+                                v-for="(domain, idx) in country?.topLevelDomain"
+                                :key="domain"
+                            >
+                                {{
+                                    idx + 1 !== country?.topLevelDomain.length
+                                        ? `${domain}, `
+                                        : domain
+                                }}
+                            </span>
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-bold">Currencies : </span>
+                            <span>{{ country?.currencies[0].name }}</span>
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-bold">Languages : </span>
+                            <span
+                                v-for="(language, idx) in country?.languages"
+                                :key="language.name"
+                            >
+                                {{
+                                    idx + 1 !== country?.languages.length
+                                        ? `${language.name}, `
+                                        : language.name
+                                }}
+                            </span>
+                        </p>
+                    </div>
                 </div>
-				<div class="mt-10">
-					<h4 class="font-bold text-lg">Border Countries : </h4>
-					<div class="flex flex-wrap ">
-						<div class="px-8 mx-2 mt-5 py-1 dark:bg-dark-blue bg-white shadow rounded-sm text-sm" v-for="(border,idx) in country?.borders" :key="border">
-							{{border}}
-						</div>
-					</div>
-				</div>
+                <div class="mt-10">
+                    <h4 class="font-bold text-lg">Border Countries :</h4>
+                    <div class="flex flex-wrap">
+                        <div
+                            class="
+                                px-8
+                                mx-2
+                                mt-5
+                                py-1
+                                dark:bg-dark-blue
+                                bg-white
+                                shadow
+                                rounded-sm
+                                text-sm
+                            "
+                            v-for="(border, idx) in country?.borders"
+                            :key="border"
+                        >
+                            {{ border }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
