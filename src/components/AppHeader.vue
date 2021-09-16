@@ -30,7 +30,9 @@ initDarkMode();
             'nav--light': !darkMode,
         }"
     >
-        <div class="nav__brand">Where in the world?</div>
+        <router-link :to="{ name: 'home' }">
+            <div class="nav__brand">Where in the world?</div>
+        </router-link>
         <div class="nav__dark-mode-toggle" @click="toggleDarkMode">
             <MoonIconOutline v-if="!darkMode" class="w-6 h-6 mr-2" />
             <MoonIconSolid v-else class="w-6 h-6 mr-2" />
@@ -39,12 +41,11 @@ initDarkMode();
     </nav>
 </template>
 
-
 <style lang="scss" scoped>
 .nav {
-    @apply px-8 py-4 flex shadow ;
+    @apply px-8 py-4 flex shadow;
     &__brand {
-        @apply font-bold text-xl;
+        @apply font-bold text-xl hover:cursor-pointer;
     }
     &__dark-mode-toggle {
         @apply flex items-center min-w-min ml-auto cursor-pointer hover:opacity-80;

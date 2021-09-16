@@ -5,6 +5,7 @@ import {
     ListboxOptions,
     ListboxOption,
 } from "@headlessui/vue";
+
 import { SearchIcon, ChevronDownIcon, CheckIcon } from "@heroicons/vue/solid";
 import { reactive, ref, onMounted, watch } from "vue";
 import type { Countries } from "@/types/Countries";
@@ -87,32 +88,44 @@ onMounted(() => {
                 placeholder="Search for a country..."
             />
         </div>
-        <div class="select__wrapper">
+        <div class="select__wrapper relative">
             <Listbox v-model="selectedRegion">
                 <ListboxButton class="select__button">
                     <span>{{ selectedRegion }}</span>
                     <ChevronDownIcon class="w-4 h-4 ml-auto" />
                 </ListboxButton>
-                <ListboxOptions class="select__dropdown">
-                    <ListboxOption
-                        class="select__dropdown-item"
-                        as="template"
-                        v-slot="{ selected }"
-                        v-for="region in regions"
-                        :key="region"
-                        :value="region"
-                    >
-                        <li
-                            class="flex"
-                            :class="{
-                                'select__dropdown-item--active': selected,
-                            }"
+                <transition
+                    enter-active-class="transition-all duration-300 ease-in-out"
+                    enter-from-class="-translate-y-10 opacity-0"
+                    enter-to-class="translate-y-0 opacity-100"
+                    leave-active-class="transition-all duration-300 ease-in-out"
+                    leave-from-class="scale-100 opacity-100"
+                    leave-to-class="scale-95 opacity-0"
+                >
+                    <ListboxOptions class="select__dropdown">
+                        <ListboxOption
+                            class="select__dropdown-item"
+                            as="template"
+                            v-slot="{ selected }"
+                            v-for="region in regions"
+                            :key="region"
+                            :value="region"
                         >
-                            <span>{{ region }}</span>
-                            <CheckIcon v-show="selected" class="w-4 h-4 ml-2" />
-                        </li>
-                    </ListboxOption>
-                </ListboxOptions>
+                            <li
+                                class="flex"
+                                :class="{
+                                    'select__dropdown-item--active': selected,
+                                }"
+                            >
+                                <span>{{ region }}</span>
+                                <CheckIcon
+                                    v-show="selected"
+                                    class="w-4 h-4 ml-2"
+                                />
+                            </li>
+                        </ListboxOption>
+                    </ListboxOptions>
+                </transition>
             </Listbox>
         </div>
     </div>
